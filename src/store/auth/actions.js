@@ -15,12 +15,17 @@ export default {
   },
   async retriveAuthToken({ commit }) {
     /* istanbul ignore next */
-    LuigiClient.addInitListener((context) => {
-      commit(TYPES.SET_TOKEN, LuigiClient.getToken());
-    });
-    // if (window.localStorage) {
-    //   commit(TYPES.SET_TOKEN, window.localStorage.getItem('authToken'));
-    // }
+    if (process.env.BOTHUB_WEBAPP_IFRAME_LOGIN) {
+      LuigiClient.addInitListener(() => {
+        const token = LuigiClient.getToken();
+        commit(TYPES.SET_TOKEN, token);
+      });
+      return;
+    }
+
+    if (window.localStorage) {
+      commit(TYPES.SET_TOKEN, window.localStorage.getItem('authToken'));
+    }
   },
   logout({ commit, dispatch }) {
     commit(TYPES.SET_TOKEN, null);
