@@ -4,6 +4,7 @@ import TYPES from '../types';
 
 export default {
   [TYPES.SET_TOKEN](state, token) {
+    console.log('received', token);
     state.token = token;
     /* istanbul ignore next */
     if (window.localStorage) {

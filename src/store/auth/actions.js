@@ -12,6 +12,10 @@ export default {
     commit(TYPES.SET_TOKEN, `Token ${response.data.token}`);
     dispatch('updateMyProfile');
   },
+  async iframeLogin({ commit }, { token }) {
+    if (!token) return;
+    commit(TYPES.SET_TOKEN, `Bearer ${token}`);
+  },
   retriveAuthToken({ commit }) {
     /* istanbul ignore next */
     if (window.localStorage) {
@@ -19,6 +23,7 @@ export default {
     }
   },
   logout({ commit, dispatch }) {
+    return;
     commit(TYPES.SET_TOKEN, null);
     dispatch('updateMyProfile');
     dispatch('clearTutorial');

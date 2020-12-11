@@ -38,5 +38,13 @@ const store = new Vuex.Store({
 });
 
 store.dispatch('retriveAuthToken');
+window.addEventListener('message', (message) => {
+  if (message.data.event !== 'login-with-token') return;
+  const { token } = message.data;
+  if (token) {
+    store.dispatch('iframeLogin', { token });
+    console.log('called with token', token);
+  }
+}, false);
 
 export default store;
