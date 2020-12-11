@@ -4,7 +4,7 @@ const prodEnv = require('./prod.env');
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_BASE_URL: JSON.stringify(process.env.API_BASE_URL || 'http://localhost:8001/'),
+  API_BASE_URL: JSON.stringify(process.env.API_BASE_URL || 'https://api.bothub.it/'),
   BOTHUB_NLP_BASE_URL: JSON.stringify(process.env.BOTHUB_NLP_BASE_URL || 'http://localhost:2657/'),
   BOTHUB_WEBAPP_BASE_URL: JSON.stringify(process.env.BOTHUB_WEBAPP_BASE_URL || 'http://localhost:8080/'),
   VERSION_ENABLED: JSON.stringify(process.env.VERSION_ENABLED || true),
@@ -16,6 +16,5 @@ module.exports = merge(prodEnv, {
   BOTHUB_WEBAPP_LIGHTHOUSE_ALGORITHM_ARTICLE_ID: JSON.stringify(process.env.BOTHUB_WEBAPP_LIGHTHOUSE_ALGORITHM_ARTICLE_ID),
   BOTHUB_WEBAPP_PAYMENT_ENABLED: process.env.BOTHUB_WEBAPP_PAYMENT_ENABLED || true,
   BOTHUB_WEBAPP_TUTORIAL_ENABLED: process.env.BOTHUB_WEBAPP_TUTORIAL_ENABLED || true,
-  BOTHUB_WEBAPP_AUTH_PREFIX: JSON.stringify(process.env.BOTHUB_WEBAPP_AUTH_PREFIX || 'Token'),
-  BOTHUB_WEBAPP_IFRAME_LOGIN: JSON.stringify(process.env.BOTHUB_WEBAPP_IFRAME_LOGIN || false),
+  BOTHUB_WEBAPP_IFRAME_LOGIN: JSON.stringify(process.env.BOTHUB_WEBAPP_IFRAME_LOGIN || true),
 })

@@ -35,6 +35,16 @@ const store = new Vuex.Store({
   },
 });
 
-store.dispatch('retriveAuthToken');
+// store.dispatch('retriveAuthToken');
+if (process.env.BOTHUB_WEBAPP_IFRAME_LOGIN) {
+  window.addEventListener('message', (message) => {
+    if (message.data.event !== 'login-with-token') return;
+    const { token } = message.data;
+    if (token) {
+      store.dispatch('iframeLogin', { token });
+      console.log('called with token');
+    }
+  }, false);
+}
 
 export default store;

@@ -1,7 +1,5 @@
 import auth from '@/api/auth';
 import TYPES from '../types';
-import LuigiClient from '@luigi-project/client';
-
 
 export default {
   async getLoginSchema() {
@@ -10,25 +8,20 @@ export default {
   },
   async login({ commit, dispatch }, { username, password }) {
     const response = await auth.login(username, password);
-    commit(TYPES.SET_TOKEN, response.data.token);
+    commit(TYPES.SET_TOKEN, { token: response.data.token });
     dispatch('updateMyProfile');
   },
+  async iframeLogin({ commit }, { token }) {
+    if (!token) return;
+    commit(TYPES.SET_TOKEN, { token, authType: 'Bearer' });
+  },
   async retriveAuthToken({ commit }) {
-    /* istanbul ignore next */
-    if (process.env.BOTHUB_WEBAPP_IFRAME_LOGIN) {
-      LuigiClient.addInitListener(() => {
-        const token = LuigiClient.getToken();
-        commit(TYPES.SET_TOKEN, token);
-      });
-      return;
-    }
-
     if (window.localStorage) {
-      commit(TYPES.SET_TOKEN, window.localStorage.getItem('authToken'));
+      commit(TYPES.SET_TOKEN, { token: window.localStorage.getItem('authToken'), authType: null });
     }
   },
   logout({ commit, dispatch }) {
-    commit(TYPES.SET_TOKEN, null);
+    commit(TYPES.SET_TOKEN, { token: null, authType: null });
     dispatch('updateMyProfile');
     dispatch('clearTutorial');
     dispatch('clearFinalizatioMessage');

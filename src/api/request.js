@@ -8,7 +8,7 @@ export default {
       baseURL: process.env.API_BASE_URL,
       headers: {
         ...(store.getters.authenticated
-          ? { Authorization: `${process.env.BOTHUB_WEBAPP_AUTH_PREFIX} ${store.getters.authToken}` } : {}),
+          ? { Authorization: `${store.getters.authToken}` } : {}),
       },
     });
     client.interceptors.response.use(
