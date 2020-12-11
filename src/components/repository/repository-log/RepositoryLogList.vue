@@ -245,16 +245,25 @@ export default {
       this.loadingLogs = true;
       this.logData.map(async ({ data }) => {
         try {
-          await this.newExample({
-            ...data,
-            intent: values.intent,
-            text: values.text,
-            entities: values.entities,
-            isCorrected: this.isCorrected,
-            repositoryVersion: this.version,
-          });
+          if (typeof values === 'string') {
+            await this.newExample({
+              ...data,
+              intent: values,
+              isCorrected: this.isCorrected,
+              repositoryVersion: this.version,
+            });
+          } else {
+            await this.newExample({
+              ...data,
+              intent: values.intent,
+              text: values.text,
+              entities: values.entities,
+              isCorrected: this.isCorrected,
+              repositoryVersion: this.version,
+            });
+          }
           this.$buefy.toast.open({
-            message: `${values.text.bold()} ${this.$t('webapp.inbox.entry_has_add_to_train')}`,
+            message: `${data.text.bold()} ${this.$t('webapp.inbox.entry_has_add_to_train')}`,
             type: 'is-success',
           });
         } catch (error) {
@@ -269,16 +278,25 @@ export default {
       this.loadingLogs = true;
       this.logData.map(async ({ data }) => {
         try {
-          await this.newEvaluateExample({
-            ...data,
-            intent: values.intent,
-            text: values.text,
-            entities: values.entities,
-            isCorrected: this.isCorrected,
-            repositoryVersion: this.version,
-          });
+          if (typeof values === 'string') {
+            await this.newEvaluateExample({
+              ...data,
+              intent: values,
+              isCorrected: this.isCorrected,
+              repositoryVersion: this.version,
+            });
+          } else {
+            await this.newEvaluateExample({
+              ...data,
+              intent: values.intent,
+              text: values.text,
+              entities: values.entities,
+              isCorrected: this.isCorrected,
+              repositoryVersion: this.version,
+            });
+          }
           this.$buefy.toast.open({
-            message: `${values.text.bold()} ${this.$t('webapp.inbox.entry_has_add_to_sentence')}`,
+            message: `${data.text.bold()} ${this.$t('webapp.inbox.entry_has_add_to_sentence')}`,
             type: 'is-success',
           });
         } catch (error) {

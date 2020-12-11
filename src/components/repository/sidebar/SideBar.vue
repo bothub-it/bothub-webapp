@@ -29,10 +29,27 @@
             icon="home"/>
           <b-menu-item
             id="tour-training-step-0"
-            :to="{ name: 'repository-training' }"
-            :label="$t('webapp.menu.training')"
-            tag="router-link"
-            icon="refresh"/>
+            :active="isTrainActive"
+            :expanded="isTrainActive"
+            icon="refresh"
+            @click="isTrainActive = !isTrainActive">
+            <template
+              slot="label"
+              slot-scope="props">
+              <span class="menu-text">{{ $t('webapp.menu.training') }}</span>
+              <b-icon
+                :icon="props.expanded ? 'caret-down' : 'caret-up'"
+                class="is-pulled-right"/>
+            </template>
+            <b-menu-item
+              :to="{ name: 'repository-training' }"
+              :label="$t('webapp.menu.train')"
+              tag="router-link"/>
+            <b-menu-item
+              :to="{ name: 'repository-suggestion' }"
+              :label="$t('webapp.menu.suggestion')"
+              tag="router-link"/>
+          </b-menu-item>
           <b-menu-item
             id="tour-evaluate-step-0"
             :active="isTestsActive"
@@ -48,8 +65,12 @@
                 class="is-pulled-right"/>
             </template>
             <b-menu-item
-              :to="{ name: 'repository-test' }"
-              :label="$t('webapp.menu.sentences')"
+              :to="{ name: 'repository-test-manual' }"
+              :label="$t('webapp.menu.test-manual')"
+              tag="router-link"/>
+            <b-menu-item
+              :to="{ name: 'repository-test-automatic' }"
+              :label="$t('webapp.menu.test-automatic')"
               tag="router-link"/>
             <b-menu-item
               :to="{ name: 'repository-results' }"
@@ -210,6 +231,7 @@ export default {
       isSettingsActive: false,
       isTestsActive: false,
       isTranslationsActive: false,
+      isTrainActive: false,
       collapse: true,
     };
   },
