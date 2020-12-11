@@ -11,10 +11,6 @@ export default {
     commit(TYPES.SET_TOKEN, { token: response.data.token });
     dispatch('updateMyProfile');
   },
-  async iframeLogin({ commit }, { token }) {
-    if (!token) return;
-    commit(TYPES.SET_TOKEN, { token, authType: 'Bearer' });
-  },
   async retriveAuthToken({ commit }) {
     if (window.localStorage) {
       commit(TYPES.SET_TOKEN, { token: window.localStorage.getItem('authToken'), authType: null });
