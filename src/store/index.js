@@ -36,4 +36,5 @@ const store = new Vuex.Store({
 });
 
 store.dispatch('retriveAuthToken');
+
 export default store;
