@@ -1,0 +1,26 @@
+@import '~bulma/sass/utilities/_all';
+@import './table';
+@import './dropdown.scss';
+@import './menu.scss';
+
+$primary-light: #b3f0be;
+$primary-light-invert: #099081;
+
+$secondary: #2a206b;
+// $secondary-invert: #7E9AF8;
+$secondary-invert: #FFFF;
+
+$colors: join(('primary-light': ($primary-light, $primary-light-invert)), $colors);
+$colors: join(('secondary': ($secondary, $secondary-invert)), $colors);
+
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+
+$family-sans-serif: 'Encode Sans', sans-serif;
+$max-repository-card-width: 1200px;
+
+@mixin default-margin {
+  padding: 0.25rem;
+  margin: 0.5rem;
+}

@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepositoryViewBase.vue error -1 renders correctly 1`] = `
+<div id="rpstr-vw-bs" class="rpstr-vw-bs">
+  <div shadow="strong" class="rpstr-vw-bs__wrapper">
+    <!---->
+    <!---->
+  </div>
+  <div class="rpstr-vw-bs__loading">
+    <loading-stub></loading-stub>
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`RepositoryViewBase.vue error 404 renders correctly 1`] = `
+<div id="rpstr-vw-bs" class="rpstr-vw-bs">
+  <div shadow="strong" class="rpstr-vw-bs__wrapper">
+    <!---->
+    <!---->
+  </div>
+  <div class="rpstr-vw-bs__loading">
+    <loading-stub></loading-stub>
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`RepositoryViewBase.vue loading renders correctly 1`] = `
+<div id="rpstr-vw-bs" class="rpstr-vw-bs">
+  <div shadow="strong" class="rpstr-vw-bs__wrapper">
+    <!---->
+    <!---->
+  </div>
+  <div class="rpstr-vw-bs__loading">
+    <loading-stub></loading-stub>
+  </div>
+  <!---->
+</div>
+`;
+
+exports[`RepositoryViewBase.vue renders correctly 1`] = `
+<div id="rpstr-vw-bs" class="rpstr-vw-bs">
+  <div shadow="strong" class="rpstr-vw-bs__wrapper">
+    <quick-test-stub repository="<Repository #1>"></quick-test-stub>
+    <!---->
+  </div>
+  <!---->
+  <request-authorization-modal-stub repositoryuuid="null" available="true"></request-authorization-modal-stub>
+</div>
+`;

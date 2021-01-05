@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickTest.vue renders correctly 1`] = `
+<div class="quick-test" currentroute="[object Object]">
+  <div class="quick-test__collapse-button">
+    <div id="tour-quick_test-step-0" is-next-disabled="true" is-step-blocked="true" class="quick-test__collapse-button__content">
+      <b-icon-stub icon="chevron-left"></b-icon-stub>
+      <p class="quick-test__collapse-button__text">
+        some specific text
+      </p>
+    </div>
+  </div>
+  <div class="quick-test__container collapsed">
+    <div class="quick-test__inner-container">
+      <div class="quick-test__login">
+        some specific text
+        <b-field-stub grouped="true" addons="true" class="quick-test__login__buttons">
+          <b-button-stub type="is-primary" nativetype="button" tag="button">
+            some specific text
+          </b-button-stub>
+          <b-button-stub type="is-primary" outlined="true" nativetype="button" tag="button">
+            some specific text
+          </b-button-stub>
+        </b-field-stub>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+  <!---->
+</div>
+`;

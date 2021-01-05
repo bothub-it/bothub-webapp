@@ -10,9 +10,42 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint',
   },
+  plugins: ['import'],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'], // default @ -> ./src alias in Vue, it
+          // exists even if vue.config.js is not present
+          /*
+          *... add your own webpack aliases if you have them in
+          vue.config.js/other webpack config file
+          * if you forget to add them, eslint-plugin-import
+          will not throw linting error in .vue
+          * imports that contain the webpack alias you forgot to add
+          */
+        ],
+        extensions: ['.vue', '.json', '.js'],
+      },
+    },
+  },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'import/no-cycle': 'off',
+    'arrow-parens': 'off',
+    'import/order': 'off',
+    'vue/no-unused-components': 'off',
+    'no-unused-vars': 'off',
+    'import/no-unresolved': [2, { caseSensitive: false }],
+    'no-multiple-empty-lines': [2, { max: 2 }],
+    'import/extensions': ['error', 'always', {
+      js: 'never',
+      vue: 'never',
+    }],
+    'import/no-extraneous-dependencies': ['error', {
+      optionalDependencies: ['test/unit/index.js'],
+    }],
   },
   overrides: [
     {

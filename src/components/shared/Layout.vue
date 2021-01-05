@@ -1,0 +1,343 @@
+<template>
+  <div
+    :class="{
+      layout: true,
+      'layout--without-background': withoutBackground,
+  }">
+    <div
+      v-if="loading"
+      class="layout__loading">
+      <div class="layout__loading__progress" />
+    </div>
+    <div class="layout__header">
+      <div class="layout__header__container">
+        <router-link
+          class="layout__header__container__logo"
+          to="/">
+          <img
+            src="@/assets/imgs/logo-white.svg"
+            alt="Bothub"
+            class="hide-mobile">
+          <img
+            src="@/assets/imgs/icon-white.svg"
+            alt="Bothub"
+            class="hide-desktop">
+        </router-link>
+        <div
+          v-if="$slots.center"
+          class="layout__header__container__center">
+          <slot name="center" />
+        </div>
+        <div class="layout__header__container__fields">
+          <div class="bh-grid bh-grid--row layout__header__options">
+            <div
+              v-if="authenticated"
+              id="tour-create_intelligence-step-1"
+              :is-next-disabled="true"
+              :is-previous-disabled="true"
+              :is-step-blocked="!blockedNextStepTutorial"
+              class="bh-grid__item hide-mobile">
+              <router-link :to="'/new'">
+                <b-button
+                  type="is-primary"
+                  inverted
+                  rounded
+                  @click="blockedNextStepTutorial = true">
+                  <strong>{{ $t('webapp.layout.newbot') }}</strong>
+                </b-button>
+              </router-link>
+            </div>
+            <div
+              v-if="authenticated && tutorialEnabled"
+              class="bh-grid__item layout__header__icon-tutorial--center">
+              <b-icon
+                class="layout__header__icon-tutorial"
+                type="is-white"
+                icon="help-circle"
+                @click.native="openBeginnerTutorialModal()"
+              />
+            </div>
+            <div
+              v-if="authenticated"
+              class="bh-grid__item">
+              <b-dropdown position="is-bottom-left">
+                <user-avatar
+                  slot="trigger"
+                  :profile="myProfile" />
+                <b-icon
+                  slot="trigger"
+                  icon="chevron-down"
+                  class="layout__header__icon"/>
+                <b-dropdown-item @click="openMyProfile()">
+                  {{ myProfile.name || '...' }}
+                </b-dropdown-item>
+                <b-dropdown-item
+                  @click="orgs()">
+                  {{ $t('webapp.layout.orgs') }}
+                </b-dropdown-item>
+                <b-dropdown-item @click="logout()">
+                  {{ $t('webapp.layout.logout') }}
+                </b-dropdown-item>
+              </b-dropdown>
+            </div>
+            <div
+              v-if="!authenticated"
+              class="bh-grid__item">
+              <bh-button
+                color="fake-white"
+                transparent
+                max-content
+                @click="signIn()">{{ $t('webapp.layout.signin') }}</bh-button>
+            </div>
+            <div
+              v-if="!authenticated"
+              class="bh-grid__item">
+              <bh-button
+                primary
+                inverted
+                max-content
+                class="hide-mobile"
+                @click="signUp()">{{ $t('webapp.layout.signup') }}</bh-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="layout__content">
+      <slot/>
+    </div>
+    <site-footer v-if="showFooter" />
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex';
+
+import SiteFooter from '@/components/shared/SiteFooter';
+import UserAvatar from '@/components/user/UserAvatar';
+
+const components = {
+  SiteFooter,
+  UserAvatar,
+};
+
+export default {
+  name: 'Layout',
+  components,
+  props: {
+    title: {
+      type: String,
+      default: 'Bothub',
+    },
+    withoutBackground: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    showFooter: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return {
+      beginnerTutorialModalOpen: false,
+      blockedNextStepTutorial: false,
+    };
+  },
+  computed: {
+    ...mapGetters([
+      'authenticated',
+      'myProfile',
+    ]),
+    tutorialEnabled() {
+      return process.env.VUE_APP_BOTHUB_WEBAPP_TUTORIAL_ENABLED;
+    },
+  },
+  watch: {
+    title() {
+      document.title = this.title;
+    },
+  },
+  mounted() {
+    document.title = this.title;
+    this.updateMyProfile('user');
+  },
+  methods: {
+    ...mapActions([
+      'updateMyProfile',
+      'logout',
+      'setTutorialMenuActive',
+    ]),
+    openNewRepository() {
+      this.$router.push({
+        name: 'new',
+      });
+    },
+    openMyProfile() {
+      this.$router.push({ name: 'profile' });
+    },
+    openBeginnerTutorialModal() {
+      if (process.env.VUE_APP_BOTHUB_WEBAPP_TUTORIAL_ENABLED) {
+        this.setTutorialMenuActive();
+      }
+    },
+    orgs() {
+      this.$router.push({
+        name: 'orgs',
+      });
+    },
+    signIn() {
+      this.$router.push({
+        name: 'signIn',
+      });
+    },
+    signUp() {
+      this.$router.push({
+        name: 'signUp',
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import '~@/assets/scss/variables.scss';
+@import '~@/assets/scss/utilities.scss';
+@import '~@/assets/scss/colors.scss';
+
+@keyframes layout-loading-progress {
+  1% {
+    width: 40%
+  }
+  2% {
+    width: 70%;
+  }
+  10% {
+    width: 80%;
+  }
+  50% {
+    width: 90%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.layout {
+  $loading-height: .3rem;
+
+  &__loading {
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: $loading-height;
+    background-color: $primary;
+    background-color: rgba($primary, .25);
+    overflow: hidden;
+
+    &__progress {
+      display: block;
+      height: $loading-height;
+      width: 20%;
+      background-color: $primary;
+      animation-name: layout-loading-progress;
+      animation-duration: 30s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__header {
+    padding: $loading-height*3.8 1rem;
+    background-color: $color-fake-grey;
+
+    &__container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-around;
+
+      &__logo {
+        min-width: ($size-normal * .75);
+        padding: ($size-normal * .125) 0;
+
+        img {
+          display: block;
+          height: 1.75rem;
+        }
+      }
+      .hide-mobile{
+        display: block;
+          @media (max-width: $mobile-width) {
+            display: none;
+          }
+      }
+
+      .hide-desktop{
+        display: none;
+          @media (max-width: $mobile-width) {
+            display: block;
+          }
+      }
+
+      &__center {
+        width: 50%;
+      }
+
+      &__fields{
+        display: flex;
+        justify-content: center;
+        width: 25%
+
+      }
+    }
+
+    &__options {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      strong {
+        letter-spacing: 0.8px;
+      }
+    }
+
+    &__icon-tutorial {
+      color: $color-white;
+      margin: 0;
+      cursor: pointer;
+
+      &--center {
+        align-self: center;
+      }
+
+      &:hover {
+        color: $color-fake-white;
+      }
+    }
+      &__icon {
+      margin-left: 0.5rem;
+      color: white;
+      width: 1rem;
+      height: 3rem;
+      cursor: pointer;
+      float: right;
+    }
+    &__center {
+      width: 50%;
+    }
+  }
+
+  &__content {
+    min-height: calc(100vh - 3.75rem);
+  }
+}
+</style>

@@ -1,0 +1,67 @@
+{
+    "max_version": "1.18.0",
+    "count": 5,
+    "images": ["mascot.svg", "1.gif", "2.gif", "3.gif", "4.gif"],
+    "en": { 
+        "back": "Back",
+        "next": "Next",
+        "cancel": "Cancel",
+        "finish": "Finish",
+        "1": {
+            "title": "Bothub has Updated!",
+            "text": "We are bringing constant updates to improve your experience!",
+            "subtext": "Now you can learn to use Bothub easily and dynamically, monitor numbers and have a more assertive feedback on intelligence responses."
+        },
+        "2": {
+            "title": "New tutorial!",
+            "text": "Learn how to use Bothub with a guided tutorial.",
+            "subtext": " "
+        },
+            "3": {
+            "title": "Monitor your intelligence!",
+            "text": "Analyze intelligence information and make more informed decisions",
+            "subtext": " "
+        },
+        "4": {
+            "title": "Create an organization!",
+            "text": "You can now create an organization and group all your company information into it.",
+            "subtext": " "
+        },
+        "5": {
+            "title": "New algorithm!",
+            "text": "We added a new algorithm with the state-of-the-art model BERT, providing even greater accuracy of intelligence.",
+            "subtext": " "
+        }
+    },
+    "pt_br": { 
+        "back": "Anterior",
+        "next": "Próximo",
+        "cancel": "Cancelar",
+        "finish": "Finalizar",
+        "1": {
+            "title": "O Bothub atualizou!",
+            "text": "Estamos trazendo atualizações constantes para melhorar sua experiência!",
+            "subtext": "Agora você pode aprender a usar o Bothub de forma fácil e dinâmica, monitora os números e tem um retorno mais assertivo nas respostas da inteligência."
+        },
+        "2": {
+            "title": "Novo tutorial!",
+            "text": "Aprenda a usar o Bothub com um tutorial guiado.",
+            "subtext": " "
+        },
+        "3": {
+            "title": "Monitore suas inteligências!",
+            "text": "Analise as informações da inteligência e tome decisões mais assertivas",
+            "subtext": " "
+        },
+        "4": {
+            "title": "Crie uma organização!",
+            "text": "Agora você pode criar uma organização e agrupar todas as informações da sua empresa nela.",
+            "subtext": " "
+        },
+        "5": {
+            "title": "Novo algoritmo!",
+            "text": "Adicionamos um novo algoritimo com o modelo de estado da arte BERT, provendo uma acuracia ainda maior da inteligência.",
+            "subtext": " "
+        }
+    }
+}

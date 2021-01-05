@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EvaluateResultExampleList.vue renders correctly 1`] = `
+<div>
+  <h3 class="evaluate-result-example-list__title">
+    some specific text
+  </h3>
+  <p>some specific text</p>
+  <!---->
+</div>
+`;

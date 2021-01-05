@@ -1,0 +1,53 @@
+import { shallowMount, createLocalVue } from '@vue/test-utils';
+import FilterEvaluateExample from '@/components/repository/repository-evaluate/example/FilterEvaluateExample';
+import store from '@/store';
+
+import sinon from 'sinon';
+
+const localVue = createLocalVue();
+
+
+describe('TestView.vue', () => {
+  let wrapper;
+  let clock;
+  beforeEach(() => {
+    clock = sinon.useFakeTimers();
+    wrapper = shallowMount(FilterEvaluateExample, {
+      localVue,
+      mocks: {
+        $t: () => 'some specific text',
+      },
+      store,
+    });
+  });
+
+  afterEach(() => {
+    clock.restore();
+  });
+
+  test('renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test('emits querystringformatted event when intent data changes', () => {
+    wrapper.vm.intent = 'like';
+
+    clock.tick(500);
+
+    expect(wrapper.emitted('querystringformatted')).toBeDefined();
+  });
+
+  test('emits querystringformatted event when entity changes', () => {
+    wrapper.vm.entity = 'cat';
+
+    clock.tick(500);
+
+    expect(wrapper.emitted('querystringformatted')).toBeDefined();
+  });
+
+  test('emits querystringformatted event when text changes', () => {
+    wrapper.vm.text = 'i like to eat sushi';
+    clock.tick(500);
+    expect(wrapper.emitted('querystringformatted')).toBeDefined();
+  });
+});

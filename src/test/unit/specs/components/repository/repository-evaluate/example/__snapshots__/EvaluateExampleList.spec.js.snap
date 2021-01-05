@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExamplesList.vue renders correctly 1`] = `
+<div class="evaluate-example-list">
+  <!---->
+  <!---->
+</div>
+`;
