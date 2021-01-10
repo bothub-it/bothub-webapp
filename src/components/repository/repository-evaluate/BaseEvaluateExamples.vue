@@ -94,6 +94,14 @@ export default {
 @import '~@/assets/scss/variables.scss';
 
 .base-example-evaluate {
+
+  &__title{
+      font-size: 1.75rem;
+      font-weight: $font-weight-medium;
+      color: $color-fake-black;
+      margin-bottom: $between-title-subtitle;
+  }
+
   &__divider {
     height: 1px;
     background-color: #d5d5d5;

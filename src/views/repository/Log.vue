@@ -149,8 +149,17 @@ export default {
     vertical-align: middle;
   }
   .repository-log {
+    font-family: $font-family;
+
     &__header {
       margin-bottom: 3.5rem;
+
+      h1 {
+      font-size: 1.75rem;
+      font-weight: $font-weight-medium;
+      color: $color-fake-black;
+      margin-bottom: $between-title-subtitle;
+      }
     }
 
     &__icon {

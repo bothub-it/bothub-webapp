@@ -274,7 +274,7 @@ export default {
 @import '~@/assets/scss/variables.scss';
 @import '~@/assets/scss/colors.scss';
 
-  .entity-edit {
+.entity-edit {
   &__title {
     font-size: 1.75rem;
     font-weight: $font-weight-medium;
@@ -312,6 +312,7 @@ export default {
     }
   }
 }
+
 .tooltipStyle::after {
   font-size: 12px;
   line-height: 13px;

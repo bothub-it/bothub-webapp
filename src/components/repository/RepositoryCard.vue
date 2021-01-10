@@ -228,7 +228,7 @@ export default {
     &__repository{
       color: $color-fake-black;
       font-family: $font-family;
-      font-weight: $font-weight-medium;
+      font-weight: $font-weight-bolder;
     }
   }
 

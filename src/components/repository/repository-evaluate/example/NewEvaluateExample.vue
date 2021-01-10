@@ -1,7 +1,9 @@
 <template>
   <div class="new-sentence">
     <div>
-      <h2>{{ $t('webapp.evaluate.add_new_test_sentence') }}</h2>
+      <h2 class="new-sentence__title">
+        {{ $t('webapp.evaluate.add_new_test_sentence') }}
+      </h2>
       <span>
         {{ $t('webapp.evaluate.create_a_bench_of_test') }}
       </span>
@@ -61,6 +63,7 @@
                 :loading="submitting"
                 :is-step-blocked="!blockedNextStepTutorial"
                 type="is-primary"
+                class="new-sentence__form__wrapper__submit-btn__button"
                 @click="submitSentence()">
                 <slot v-if="!submitting">{{ $t('webapp.evaluate.submit') }}</slot>
               </b-button>
@@ -262,11 +265,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/scss/colors.scss';
 @import '~@/assets/scss/variables.scss';
 
 .new-sentence {
   width: 100%;
   margin: 2rem auto 0;
+
+  &__title {
+      font-size: 1.75rem;
+      font-weight: $font-weight-medium;
+      color: $color-fake-black;
+      margin-bottom: $between-title-subtitle;
+  }
+
+  span {
+    font-family: $font-family;
+  }
 
   &__form {
 
@@ -284,6 +299,10 @@ export default {
       &__submit-btn {
         align-self: center;
         justify-self: flex-end;
+
+        &__button {
+          min-width: 100px;
+        }
       }
     }
   }

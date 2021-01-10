@@ -215,6 +215,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/assets/scss/colors.scss';
+@import '~@/assets/scss/variables.scss';
 
     .icon {
         color: $color-grey-dark
@@ -224,6 +225,7 @@ export default {
         margin-right: 0.5rem;
         &__label {
           font-size: 12px;
+          font-family: $font-family;
         }
       }
 
@@ -231,7 +233,7 @@ export default {
         display: flex;
         align-items: center;
         .icon {
-          margin-top: 1rem;
+          margin-top: 2rem;
         }
       }
 

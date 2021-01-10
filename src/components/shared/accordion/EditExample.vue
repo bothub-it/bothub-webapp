@@ -134,12 +134,14 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/assets/scss/colors.scss';
+@import '~@/assets/scss/variables.scss';
 
 .edit-sentence {
 
   &__wrapper {
     max-width: 100%;
     margin: 0 1rem;
+    font-family: $font-family;
   }
 
   &__input {
@@ -177,6 +179,7 @@ export default {
     &__cancelButton{
       height: 2.25rem;
       width: 6rem;
+      margin-right: 0.5rem;
       background-color:$color-primary;
       color: $color-white;
     }

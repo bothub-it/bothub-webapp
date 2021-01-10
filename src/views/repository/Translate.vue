@@ -311,6 +311,7 @@ import AutoTranslate from '@/components/translate/AutoTranslate';
 import Train from '@/components/repository/training/Train';
 import Loading from '@/components/shared/Loading';
 import TranslateTokenModal from '@/components/translate/TranslateTokenModal';
+import TranslateList from '@/components/translate/TranslateList';
 import Tour from '@/components/Tour';
 import {
   languageListToDict,
@@ -331,6 +332,7 @@ export default {
     AutoTranslate,
     Loading,
     TranslateTokenModal,
+    TranslateList,
   },
   extends: RepositoryBase,
   data() {
@@ -538,7 +540,7 @@ export default {
 .repository-translate {
   background-color: $color-white;
   display:flex;
-   flex-direction: column;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 

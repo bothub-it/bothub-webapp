@@ -8,8 +8,12 @@
           <div v-if="repository.authorization.can_contribute">
             <div class="trainings-repository__list-wrapper">
               <div>
-                <h2>{{ $t('webapp.trainings.grid_text1') }}</h2>
-                <span>{{ $t('webapp.trainings.grid_text2') }}</span>
+                <h2 class="trainings-repository__list-wrapper__title">
+                  {{ $t('webapp.trainings.grid_text1') }}
+                </h2>
+                <span class="trainings-repository__list-wrapper__subtitle">
+                  {{ $t('webapp.trainings.grid_text2') }}
+                </span>
               </div>
             </div>
             <new-example-form
@@ -68,7 +72,9 @@
         <hr>
         <div
           class="trainings-repository__list-wrapper">
-          <h2>{{ $t('webapp.trainings.sentences_list') }}</h2>
+          <h2 class="trainings-repository__list-wrapper__title">
+            {{ $t('webapp.trainings.sentences_list') }}
+          </h2>
         </div>
         <filter-examples
           :intents="repository.intents_list"
@@ -225,6 +231,16 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-bottom: .5rem;
+
+    &__title{
+      font-size: 1.75rem;
+      font-weight: $font-weight-medium;
+      color: $color-fake-black;
+      margin-bottom: $between-title-subtitle;
+    }
+     &__subtitle{
+      font-size: $font-size;
+    }
 
     &__button{
       color: $color-white;

@@ -5902,7 +5902,7 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-highlight.js@^10.0.0:
+highlight.js@*, highlight.js@^10.0.0, highlight.js@^10.5.0:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.5.0.tgz#3f09fede6a865757378f2d9ebdcbc15ba268f98f"
   integrity sha512-xTmvd9HiIHR6L53TMC7TKolEj65zG1XU+Onr8oi86mYa+nLcIbxTTWkpW7CsEwv/vK7u1zb8alZIMLDqqN6KTw==
@@ -8260,11 +8260,6 @@ match-at@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/match-at/-/match-at-0.1.1.tgz#25d040d291777704d5e6556bbb79230ec2de0540"
   integrity sha512-h4Yd392z9mST+dzc+yjuybOGFNOZjmXIPKWjxBd1Bb23r4SmDOsk2NYCU2BMUBGbSpZqwVsZYNq26QS3xfaT3Q==
-
-material-design-icons-updated@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/material-design-icons-updated/-/material-design-icons-updated-6.2.0.tgz#14cd3acea98bfe01353c704caa134194b71c5437"
-  integrity sha512-nOLWZa5/WWhTLkmp3jI6izbAdYFRzcX0HrppvRLYXpJt/Et/Vx4D9HtMvYBP28UtAoEwManwxwQ9vXqL1Jd6RQ==
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -12188,6 +12183,13 @@ vue-eslint-parser@^7.0.0:
     espree "^6.2.1"
     esquery "^1.0.1"
     lodash "^4.17.15"
+
+vue-highlightjs@^1.3.3:
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/vue-highlightjs/-/vue-highlightjs-1.3.3.tgz#29a0d57132fc1ce15cfa61e896918f5b718c5d52"
+  integrity sha1-KaDVcTL8HOFc+mHolpGPW3GMXVI=
+  dependencies:
+    highlight.js "*"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

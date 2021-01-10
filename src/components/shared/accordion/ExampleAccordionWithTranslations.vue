@@ -43,7 +43,7 @@
       slot="options"
       class="example-item__intent example-item__faded">
       <strong class="example-item__faded"> {{ $t('webapp.evaluate.intent') }}: </strong>
-      &nbsp;{{ intent }}
+      &nbsp; {{ intent }}
     </div>
     <div
       slot="options"
@@ -248,6 +248,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '~@/assets/scss/colors.scss';
+@import '~@/assets/scss/variables.scss';
 
     .example-item {
         &__header {
@@ -270,6 +271,11 @@ export default {
 
         &__faded {
             color: $color-grey-dark;
+            font-family: $font-family;
+
+            strong {
+              margin-right: 0.5rem;
+            }
         }
 
         &__intent {

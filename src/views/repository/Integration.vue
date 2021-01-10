@@ -25,9 +25,9 @@ class="t">
           <div class="repository-analyze-text-header-field">
             <p><strong>{{ $t('webapp.analyze_text.method_send') }}</strong></p>
             <highlighted-code code-class="plaintext">{
-  "language":"[{{ $t('webapp.analyze_text.language_code') }}]"
-  "text": "[{{ $t('webapp.analyze_text.text_to_analyze') }}]"
-}
+        "language":"[{{ $t('webapp.analyze_text.language_code') }}]"
+        "text": "[{{ $t('webapp.analyze_text.text_to_analyze') }}]"
+      }
             </highlighted-code>
           </div>
         </div>

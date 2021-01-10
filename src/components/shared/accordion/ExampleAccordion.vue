@@ -41,7 +41,7 @@
             <b-icon
               icon="pencil"
               size="is-small"
-              class="text-color-grey-dark example__icon" />
+              class="example__icon" />
           </a>
         </div>
       </div>
@@ -56,7 +56,7 @@
             <b-icon
               icon="delete"
               size="is-small"
-              class="text-color-grey-dark example__icon" />
+              class="example__icon" />
           </a>
         </div>
       </div>
@@ -225,7 +225,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/scss/colors.scss';
+@import '~@/assets/scss/variables.scss';
 
+.example__icon {
+  color: $color-grey-dark;
+}
   .example-accordion {
 
     &__text {

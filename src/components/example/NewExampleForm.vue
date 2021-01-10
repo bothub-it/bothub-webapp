@@ -59,6 +59,7 @@
               :loading="submitting"
               :is-step-blocked="!blockedNextStepTutorial"
               type="is-primary"
+              class="button"
               native-type="submit">
               <slot v-if="!submitting">{{ $t('webapp.trainings.submit') }}</slot>
             </b-button>
@@ -261,5 +262,9 @@ export default {
 
 .columns.is-variable .column:last-child {
   padding-right: 0;
+}
+
+.button {
+  min-width: 100px;
 }
 </style>
