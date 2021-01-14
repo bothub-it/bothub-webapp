@@ -29,14 +29,14 @@
           <slot name="center" />
         </div>
         <div class="layout__header__container__fields">
-          <div class="bh-grid bh-grid--row layout__header__options">
+          <div class="layout__header__options">
             <div
               v-if="authenticated"
               id="tour-create_intelligence-step-1"
               :is-next-disabled="true"
               :is-previous-disabled="true"
               :is-step-blocked="!blockedNextStepTutorial"
-              class="bh-grid__item hide-mobile">
+              class="hide-mobile">
               <router-link :to="'/new'">
                 <b-button
                   type="is-primary"
@@ -49,7 +49,7 @@
             </div>
             <div
               v-if="authenticated && tutorialEnabled"
-              class="bh-grid__item layout__header__icon-tutorial--center">
+              class="layout__header__icon-tutorial--center">
               <b-icon
                 class="layout__header__icon-tutorial"
                 type="is-white"
@@ -58,8 +58,7 @@
               />
             </div>
             <div
-              v-if="authenticated"
-              class="bh-grid__item">
+              v-if="authenticated">
               <b-dropdown position="is-bottom-left">
                 <user-avatar
                   slot="trigger"
@@ -80,24 +79,16 @@
                 </b-dropdown-item>
               </b-dropdown>
             </div>
-            <div
-              v-if="!authenticated"
-              class="bh-grid__item">
-              <bh-button
-                color="fake-white"
-                transparent
-                max-content
-                @click="signIn()">{{ $t('webapp.layout.signin') }}</bh-button>
-            </div>
-            <div
-              v-if="!authenticated"
-              class="bh-grid__item">
-              <bh-button
-                primary
-                inverted
-                max-content
-                class="hide-mobile"
-                @click="signUp()">{{ $t('webapp.layout.signup') }}</bh-button>
+            <div class="layout__header__options__buttons" v-if="!authenticated" >
+              <b-button
+                expanded
+                class="layout__header__options__buttons__btn"
+                @click="signIn()">{{ $t('webapp.layout.signin') }}</b-button>
+              <b-button
+                expanded
+                type='is-primary'
+                class="layout__header__options__buttons__btn hide-mobile"
+                @click="signUp()">{{ $t('webapp.layout.signup') }}</b-button>
             </div>
           </div>
         </div>
@@ -178,7 +169,9 @@ export default {
       });
     },
     openMyProfile() {
-      this.$router.push({ name: 'profile' });
+      if (this.$router.currentRoute.name !== 'profile') {
+        this.$router.push({ name: 'profile' });
+      }
     },
     openBeginnerTutorialModal() {
       if (process.env.VUE_APP_BOTHUB_WEBAPP_TUTORIAL_ENABLED) {
@@ -273,20 +266,6 @@ export default {
           height: 1.75rem;
         }
       }
-      .hide-mobile{
-        display: block;
-          @media (max-width: $mobile-width) {
-            display: none;
-          }
-      }
-
-      .hide-desktop{
-        display: none;
-          @media (max-width: $mobile-width) {
-            display: block;
-          }
-      }
-
       &__center {
         width: 50%;
       }
@@ -307,6 +286,19 @@ export default {
 
       strong {
         letter-spacing: 0.8px;
+      }
+
+      &__buttons{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        &__btn {
+          width: 40%;
+           @media screen and (max-width: $mobile-width) {
+              width: 100%;
+            }
+        }
       }
     }
 

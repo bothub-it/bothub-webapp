@@ -369,12 +369,14 @@ h1 {
 
         &__content {
           padding: 3.875rem 0 6.563rem 0;
+          font-family: $font-family;
         }
 
         &__header {
             background-color: $color-white;
             width: 100%;
             padding: 4rem 0;
+            font-family: $font-family;
             &__content {
                 display: flex;
                 justify-content: center;
@@ -393,6 +395,7 @@ h1 {
         }
 
         &__tabs {
+          font-family: $font-family;
           &__container {
             background-color: $color-white;
             width: 100%;

@@ -51,7 +51,7 @@
           <div class="new-sentence__form__wrapper__submit-btn">
             <b-tooltip
               :label="validationErrors.join(', ')"
-              :is-active="!isValid && validationErrors.length > 0"
+              :active="!isValid && validationErrors.length > 0"
               multilined
               type="is-dark">
               <b-button

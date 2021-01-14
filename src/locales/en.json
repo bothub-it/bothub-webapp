@@ -4,8 +4,8 @@
       "newbot": "new bot",
       "start_you_bot": "Start your Intelligence",
       "logout": "Logout",
-      "signin": "sign in",
-      "signup": "sign up",
+      "signin": "Sign in",
+      "signup": "Sign up",
       "orgs": "Organizations",
       "terms_conditions": "Terms & conditions",
       "contact_us": "Contact Us",
@@ -71,6 +71,7 @@
     "landing_page": {
       "signin": "Sign in",
       "signup": "Sign up",
+      "or": "or",
       "header_content1": "Artificial Intelligence for chatbots",
       "header_content2": "Customize your chatbot with the ideal dataset in minutes, no need for knowledge in programming.",
       "join_for_free": "Sign up for free",

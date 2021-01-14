@@ -365,6 +365,7 @@ h1 {
 
         &__content {
           padding: 3.875rem 0 6.563rem 0;
+          font-family: $font-family;
         }
 
         &__header {

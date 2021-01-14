@@ -136,9 +136,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~@/assets/scss/colors.scss';
+@import '~@/assets/scss/variables.scss';
+
   .settings {
+    font-family: $font-family;
+
     &__section {
       margin-bottom: 2rem;
+
+      h1 {
+      font-size: 1.75rem;
+      font-weight: $font-weight-medium;
+      color: $color-fake-black;
+      margin-bottom: $between-title-subtitle;
+      }
     }
   }
 </style>

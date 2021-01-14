@@ -1,9 +1,5 @@
 <template>
   <footer>
-    <div
-      class="footer__background-svg"
-      v-html="BackgroundSvg"
-    />
     <div class="container">
       <div class="footer-content">
         <div class="footer-items">
@@ -75,7 +71,6 @@
 <script>
 import axios from 'axios';
 import qs from 'query-string';
-import BackgroundSvg from '@/assets/imgs/bg-footer.svg';
 
 
 export default {
@@ -85,7 +80,6 @@ export default {
       email: '',
       submittingNewsletter: false,
       version: process.env.VERSION,
-      BackgroundSvg,
     };
   },
   methods: {
